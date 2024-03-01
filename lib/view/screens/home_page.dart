@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/model/global_variable.dart';
+import 'package:shopping_app/view/screens/product_details_page.dart';
 import 'package:shopping_app/view/shared/custom_chip_widget.dart';
 import 'package:shopping_app/view/shared/custom_text_field_widget.dart';
 import 'package:shopping_app/view/shared/product_card_widget.dart';
@@ -68,13 +69,21 @@ class _HomePageState extends State<HomePage> {
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index];
-                return ProductCard(
-                  backgroundColor: index.isEven
-                      ? const Color.fromRGBO(216, 240, 253, 1)
-                      : const Color.fromRGBO(245, 247, 249, 2),
-                  title: product['title'] as String,
-                  price: product['price'] as double,
-                  imageUrl: product['imageUrl'] as String,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetailsPage(product: product)));
+                            
+                  },
+                  child: ProductCard(
+                    backgroundColor: index.isEven
+                        ? const Color.fromRGBO(216, 240, 253, 1)
+                        : const Color.fromRGBO(245, 247, 249, 2),
+                    title: product['title'] as String,
+                    price: product['price'] as double,
+                    imageUrl: product['imageUrl'] as String,
+                  ),
                 );
               },
             ),

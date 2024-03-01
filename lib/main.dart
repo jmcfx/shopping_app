@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/model/global_variable.dart';
 
-import 'package:shopping_app/view/screens/product_details_page.dart';
+
+import 'package:shopping_app/view/screens/home_page.dart';
+
+
+
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home:  ProductDetailsPage(product: products[0] ) ,
+      home: const HomePage()
     );
   }
 }
