@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_app/controller/cart_provider.dart';
-import 'package:shopping_app/controller/page_provider.dart';
-import 'package:shopping_app/controller/product_size_provider.dart';
+import 'package:shopping_app/controller/providers/cart_provider.dart';
+import 'package:shopping_app/controller/providers/page_provider.dart';
+import 'package:shopping_app/controller/providers/product_size_provider.dart';
 import 'package:shopping_app/view/screens/base.dart';
 
 void main() {

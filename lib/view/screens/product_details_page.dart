@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_app/controller/cart_provider.dart';
-import 'package:shopping_app/controller/product_size_provider.dart';
+import 'package:shopping_app/controller/providers/cart_provider.dart';
+import 'package:shopping_app/controller/providers/product_size_provider.dart';
 import 'package:shopping_app/view/shared/custom_header_text_style.dart';
 import 'package:shopping_app/view/shared/style.dart';
 
@@ -31,6 +31,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               child: Image(
                 image: CachedNetworkImageProvider(
                     widget.product['imageUrl'] as String),
+                    height: 250,
               ),
             ),
             const Spacer(
@@ -105,8 +106,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         elevation: 3,
                         padding: const EdgeInsets.all(9),
                         backgroundColor: Theme.of(context).primaryColor,
-                        minimumSize: Size(
-                          MediaQuery.of(context).size.width,
+                        fixedSize: const Size(
+                          350,
                           50,
                         ),
                       ),
