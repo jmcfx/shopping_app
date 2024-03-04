@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/controller/cart_provider.dart';
 import 'package:shopping_app/controller/page_provider.dart';
+import 'package:shopping_app/controller/product_size_provider.dart';
 import 'package:shopping_app/view/screens/base.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (create) => PageNotifier(),
         ),
+        ChangeNotifierProvider(create: (create)=> ProductSizeNotifier())
       ],
       child: MaterialApp(
         title: 'Shopping App',
