@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_app/controller/cart_provider.dart';
 import 'package:shopping_app/view/shared/custom_header_text_style.dart';
 import 'package:shopping_app/view/shared/style.dart';
 
@@ -78,38 +80,56 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   padding: const EdgeInsets.all(20.0),
                   //Add to Cart Button....
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (selectedSize != 0) {
+                        Provider.of<CartProvider>(context, listen: false)
+                            .addProduct({
+                          'id': widget.product['id'],
+                          'title': widget.product['title'],
+                          'price': widget.product['price'],
+                          'imageUrl': widget.product['imageUrl'],
+                          'company' : widget.product['company'],
+                          'size': selectedSize
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Product Added Successfully!')));
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('Please Select Size!'),
+                        ));
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       elevation: 3,
+                      padding: const EdgeInsets.all(9),
                       backgroundColor: Theme.of(context).primaryColor,
                       minimumSize: Size(
                         MediaQuery.of(context).size.width,
                         50,
                       ),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.shopping_cart,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                          size: 32,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Add To Cart',
+                          style: TextStyle(
                             color: Colors.black,
-                            size: 32,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'Add To Cart',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

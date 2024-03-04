@@ -1,18 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 class ProductCard extends StatelessWidget {
   const ProductCard(
       {super.key,
       required this.title,
       required this.price,
-      required this.imageUrl, required this.backgroundColor});
+      required this.imageUrl,
+      required this.backgroundColor});
   final String title, imageUrl;
   final double price;
   final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
+  
     return Container(
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(16.0),
